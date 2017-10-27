@@ -5,6 +5,11 @@ using namespace std;
 
 class Monarchy {
     public:
+    Monarchy (int numDominions) {
+        numberOfDominions = numDominions;
+        dominions = new int[numDominions];
+    }
+
     int numberOfDominions;
     int* dominions;
 };
@@ -32,11 +37,14 @@ int main(int argc, char **argv) {
             infile >> instring;
             int numberOfMonarchies = stoi(instring);
             
-            for(int k = 0; k < numberOfMonarchies; k++) { 
+            // parse each monarchy
+            for(int k = 0; k < numberOfMonarchies; k++) {  
                 infile >> instring;
                 int numberOfDominions = stoi(instring);
+                Monarchy newMonarchy(numberOfDominions);
                 for(int j = 0; j < numberOfDominions; j++) {
-
+                    infile >> instring;
+                    newMonarchy.dominions[j] = stoi(instring);
                 }
             }
         }
